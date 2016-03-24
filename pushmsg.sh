@@ -1,6 +1,6 @@
-#! /bin/sh
+#! /bin/zsh
 
-source private/pushover-creds.sh #should define $APPKEY and $USRKEY
+source private/pushover-creds.sh   #should define $APPKEY and $USRKEY
 
 pushmsg () {
   torify curl -s \
