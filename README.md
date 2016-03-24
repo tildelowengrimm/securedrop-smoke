@@ -12,7 +12,7 @@ Clone this repo
 Step two
 --------
 
-Create a file called `private/pushover-creds.sh` and set the $APPKEY and $USRKEY variables with the ones you'd like to use.
+Create a file called `private/pushover-creds.sh` and set the `$APPKEY` and `$USRKEY` variables with the ones you'd like to use.
 
 Step three
 ----------
