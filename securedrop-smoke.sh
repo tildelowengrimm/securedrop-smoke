@@ -5,14 +5,10 @@
 ONION="http://nopenopenope.onion"
 STRNG="<title>SecureDrop | Protecting Journalists and Sources</title>"
 
-#PUSHOVER
-APPKEY=nopenopenope
-USRKEY=nopenopenope
-
-
 MESSAGE="SecureDrop instance unavailable"
 
-source ./pushmsg.sh
+source ./pushmsg.sh #provides pushmsg() function, reads $TITLE & $MSG
+
 
 check () {
   if torify curl -s "${ONION}" | grep -q "${STRNG}" ; then

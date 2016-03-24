@@ -1,5 +1,7 @@
 #! /bin/sh
 
+source private/pushover-creds.sh #should define $APPKEY and $USRKEY
+
 pushmsg () {
   torify curl -s \
     --form-string "token=$APPKEY" \
