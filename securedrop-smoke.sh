@@ -8,6 +8,13 @@ STRNG="<title>SecureDrop | Protecting Journalists and Sources</title>"
 # the heart of the notification message to send
 MESSAGE="SecureDrop instance unavailable"
 
+#source pushmsg.sh   #provides pushmsg() function, reads $TITLE & $MSG
+source slackmsg.sh   #provides slackmsg() function, reads $MSG
+
+notify () {
+  #pushmsg
+  slackmsg
+  }
 
 ## Configure the Onion address for the SecureDrop instance we're checking
 
@@ -30,14 +37,11 @@ if ! echo "$ONION" | egrep -q 'http:\/\/[a-z,0-9]{16}.onion' ; then
   fi
     
 
-source pushmsg.sh   #provides pushmsg() function, reads $TITLE & $MSG
-
-
 check () {
   if torify curl -s "${ONION}" | grep -q "${STRNG}" ; then
       exit 0
     elif [ $PUSH = "yes" ] ; then
-      pushmsg
+      notify
     fi
   }
 
