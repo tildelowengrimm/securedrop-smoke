@@ -12,8 +12,8 @@ MESSAGE="SecureDrop instance unavailable"
 source slackmsg.sh   #provides slackmsg() function, reads $MSG
 
 notify () {
-  #pushmsg
-  slackmsg
+  pushmsg $1 $2
+  slackmsg $1
   }
 
 ## Configure the Onion address for the SecureDrop instance we're checking
@@ -35,13 +35,13 @@ if ! echo "$ONION" | egrep -q 'http:\/\/[a-z,0-9]{16}.onion' ; then
     >&2 echo "Invalid Tor onion service address supplied. Please speficy an address in the form \`http://xxxxxxxxxxxxxxxx.onion\`."
     exit 2
   fi
-    
+
 
 check () {
   if torify curl -s "${ONION}" | grep -q "${STRNG}" ; then
       exit 0
     elif [ $PUSH = "yes" ] ; then
-      notify
+      notify "$MSG" "$TITLE"
     fi
   }
 
